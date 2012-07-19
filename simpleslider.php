@@ -177,7 +177,20 @@ function sss_handle_shortcode( $attrs ) {
 					__( 'Next', 'simple_slideshow' ) . " ►</a>";
 					
 	$resp .= "</div>\n";
-	
+    
+    // Here is the new chunk of code for adding titles, captions and descriptions to the slideshow
+    $resp .= "\n<div class=\"simpleslider_imageinfo\" id=".$slider_imageinfo_id.">";
+    foreach ( $images as $image_id => $image_data ) {
+
+        // Fetch the image title, caption and description from the image_data arrays
+        $image_title = $image_titles[$image_id];
+        $image_caption = $image_captions[$image_id];
+        $image_desc = $image_descs[$image_id];
+
+        // Insert the image title, caption and description into the JSON response
+        $resp .= "\n<div>\n<h2>".$image_title."</h2>\n<p><i>".$image_caption."</i></p>\n<p>".$image_desc."</p>\n</div>\n";
+    }
+    $resp .= "</div>\n";
 	
 	// JavaScript
 	$prefs = array('slides'=>count($images), 'transition_speed'=>$transition_speed);
