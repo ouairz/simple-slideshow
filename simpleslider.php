@@ -94,9 +94,6 @@ function sss_handle_shortcode( $attrs ) {
 								'image&post_parent=' . get_the_ID() .
 								'&orderby=menu_order&order=ASC' );
 	
-	print_r(shortcode_atts( $defaults, 
-				$attrs));			
-	
 	// Don't load anything or start processing if there are no 
 	// images to display.
 	if( empty($images) ) 
