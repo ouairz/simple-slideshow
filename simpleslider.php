@@ -117,16 +117,20 @@ function sss_handle_shortcode( $attrs ) {
 		$image_props[ $image_id ] = wp_get_attachment_image_src( $image_id, $size );
 		$thumb_w = max ( $thumb_w, $image_props[ $image_id ][ 1 ] );
 		$thumb_h = max ( $thumb_h, $image_props[ $image_id ][ 2 ] );
-		$captions[ $image_id ] = $image_data->post_excerpt;
+		$image_captions[ $image_id ] = $image_data->post_excerpt;
+        $image_titles[ $image_id ] = $image_data->post_title;
+        $image_descs[ $image_id ] = $image_data->post_content;
 	}
 
 	$slider_show_id = 'simpleslider_show_' . get_the_ID();
+    $slider_imageinfo_id = 'simpleslider_imageinfo_' . get_the_ID();
 	$slider_show_number = get_the_ID();
 	
 	$resp .= "<div class=\"simpleslider_show\" id=\"{$slider_show_id}\" " . 
 				"style=\"height: {$thumb_h}px; width: {$thumb_w}px;\">\n";
 	
 	$first = true;
+
 	foreach ( $images as $image_id => $image_data ) {
 		$opacity = $first ? '1' : '0'; 
 		$first = false;
@@ -177,8 +181,8 @@ function sss_handle_shortcode( $attrs ) {
 					__( 'Next', 'simple_slideshow' ) . " ►</a>";
 					
 	$resp .= "</div>\n";
-    
-    // Here is the new chunk of code for adding titles, captions and descriptions to the slideshow
+
+    // New chunk of code for adding the Image info
     $resp .= "\n<div class=\"simpleslider_imageinfo\" id=".$slider_imageinfo_id.">";
     foreach ( $images as $image_id => $image_data ) {
 

@@ -5,8 +5,8 @@
 }
 
 .simpleslider_controls {
-	margin: 10px auto;
-	text-align: center; 
+    text-align:center;
+    display:block;
 	font-size: 0.75em; 	
 	width: 100%;
 }
@@ -16,10 +16,13 @@
 }
 
 .simpleslider_show {
-	margin: 10px auto;
+    display:block;
+    margin:10px auto;
+    margin-bottom:25px;
 }
 
-.simpleslider_imageinfo {
+.simpleslider_imageinfo  {
+    margin:10px auto;
     display:block;
     width:100%;
 }

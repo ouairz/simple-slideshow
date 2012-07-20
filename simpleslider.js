@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 		
 	$.each(simpleslider_prefs, function(k, v){
 		t_show = $('#simpleslider_show_' + k);
-        t_info = $('#simpleslider_image_info_' + k);
+        t_info = $('#simpleslider_imageinfo_' + k);
 		var opts = {
 			timeout: 0, 
 			speed: v['transition_speed'],
@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 		if('auto_advance_speed' in v)
 			opts['timeout'] = v['auto_advance_speed'];
 		
-		t_show.cycle(opts);
+        t_show.cycle(opts);
         t_info.cycle(opts);
 	});
 	
